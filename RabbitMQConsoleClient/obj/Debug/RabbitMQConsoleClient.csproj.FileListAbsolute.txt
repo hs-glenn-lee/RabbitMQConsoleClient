@@ -1,0 +1,12 @@
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQConsoleClient.exe.config
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQConsoleClient.exe
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQConsoleClient.pdb
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQ.Client.dll
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQ.Client.xml
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.csprojAssemblyReference.cache
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.csproj.CoreCompileInputs.cache
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.csproj.CopyComplete
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.exe
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.pdb
