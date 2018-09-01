@@ -10,3 +10,5 @@ C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debu
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.csproj.CopyComplete
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.exe
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.pdb
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.xml

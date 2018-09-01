@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RabbitMQ.Client;
+using Newtonsoft.Json; // install-package Newtonsoft.Json
 
 namespace RabbitMQConsoleClient
 {
@@ -34,13 +35,20 @@ namespace RabbitMQConsoleClient
                                  arguments: null);
                                  */
 
-                    string message = "Hello World!";
+                    string message = "{\"from\":\"app\"}";
+                    
                     var body = Encoding.UTF8.GetBytes(message);
+                    
 
+                    AppAuthMessage msg = new AppAuthMessage { from = "from app" };
+                    string jsonMsg = JsonConvert.SerializeObject(msg);
+                    IBasicProperties basicProperties = channel.CreateBasicProperties();
+                    basicProperties.ContentEncoding = "UTF-8";
+                    basicProperties.ContentType = "application/json";
 
-                    channel.BasicPublish(exchange: "amq.direct",
-                                         routingKey: "created.docs.server.q",
-                                         basicProperties: null,
+                    channel.BasicPublish(exchange: "created-docs.direct",
+                                         routingKey: "app.auth",
+                                         basicProperties: basicProperties,
                                          body: body);
                     Console.WriteLine(" [x] Sent {0}", message);
 
@@ -49,5 +57,10 @@ namespace RabbitMQConsoleClient
 
             Console.ReadLine();
         }
+    }
+
+    class AppAuthMessage
+    {
+        public string from { get; set; }
     }
 }
