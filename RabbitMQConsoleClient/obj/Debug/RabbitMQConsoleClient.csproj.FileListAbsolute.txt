@@ -12,3 +12,4 @@ C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debu
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.pdb
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.dll
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.xml
+C:\Users\leehs\Source\Repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\EasyNetQ.dll
