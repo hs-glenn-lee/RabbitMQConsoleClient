@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using RabbitMQ.Client;
 using Newtonsoft.Json; // install-package Newtonsoft.Json
 using EasyNetQ; // Install-Package EasyNetQ
+using System.Net.NetworkInformation;
 
 
 namespace RabbitMQConsoleClient
@@ -14,62 +15,34 @@ namespace RabbitMQConsoleClient
     {
         static void Main(string[] args)
         {
+            //get mac address
+            String firstMacAddress = NetworkInterface
+                .GetAllNetworkInterfaces()
+                .Where(nic => nic.OperationalStatus == OperationalStatus.Up && nic.NetworkInterfaceType != NetworkInterfaceType.Loopback)
+                .Select(nic => nic.GetPhysicalAddress().ToString())
+                .FirstOrDefault();
 
-            var factory = new ConnectionFactory() {
-                HostName = "207.148.88.116",
-                UserName = "created-docs-dev",
-                Password = "rlaehdgus",
-                VirtualHost = "created-docs-vhost"
-            };
-
-            // created-docs-vhost
-            // created-docs-dev
-            /*
-            using (var connection = factory.CreateConnection())
-            {
-                using (var channel = connection.CreateModel())
-                {
-                    
-                   // channel.QueueDeclare(queue: "hello2",
-                  //               durable: false,
-                   //              exclusive: false,
-                    //             autoDelete: true,
-                     //            arguments: null);
-                                 
-
-                    string message = "{\"from\":\"app\"}";
-                    
-                    var body = Encoding.UTF8.GetBytes(message);
-                    
-
-                    AppAuthMessage msg = new AppAuthMessage { from = "from app" };
-                    string jsonMsg = JsonConvert.SerializeObject(msg);
-                    IBasicProperties basicProperties = channel.CreateBasicProperties();
-                    basicProperties.ContentEncoding = "UTF-8";
-                    basicProperties.ContentType = "application/json";
-
-                    channel.BasicPublish(exchange: "created-docs.direct",
-                                         routingKey: "app.auth",
-                                         basicProperties: basicProperties,
-                                         body: body);
-                    Console.WriteLine(" [x] Sent {0}", message);
-
-                }
-            }
-            */
-
+            var clientId = firstMacAddress;
 
             var advBus = RabbitHutch.CreateBus("host=207.148.88.116:5672; virtualHost=created-docs-vhost; username=created-docs-dev; password=rlaehdgus").Advanced;
             var exchange = advBus.ExchangeDeclare("created-docs.direct", ExchangeType.Direct);
             var queue = advBus.QueueDeclare(
-                "username-q",
+                "client." + clientId + ".auth",
                 durable: false,
                 exclusive: false,
                 autoDelete: true
             );
 
+            var unauthQueue = advBus.QueueDeclare(
+                "client."+clientId+".unauth",
+                durable: false,
+                exclusive: false,
+                autoDelete: true
+            );
+            advBus.Bind(exchange, unauthQueue, "client." + clientId + ".unauth");
 
-            Authentication appAuthMessage = new Authentication { username = "123", password="12345", type="normal" };
+
+            Authentication appAuthMessage = new Authentication { username = "123", password="12345", type=Authentication.ACTIVATE_NEW };
             string jsonMsg = JsonConvert.SerializeObject(appAuthMessage);
             var body = Encoding.UTF8.GetBytes(jsonMsg);
 
@@ -82,6 +55,7 @@ namespace RabbitMQConsoleClient
 
             var msg = new Message<Authentication>(appAuthMessage);
             msg.SetProperties(messageProperties);
+            
 
             advBus.Publish(
                 exchange,
@@ -110,15 +84,27 @@ namespace RabbitMQConsoleClient
 
     class Authentication
     {
+        public static String NORMAL = "NORMAL";
+        public static String ENFORCED = "ENFORCED";
+        public static String ACTIVATE_NEW = "ACTIVATE_NEW";
+
         public string username { get; set; }
         public string password { get; set; }
         public string type { get; set; } //
+        public string clientId { get; set; } 
     }
 
     class AuthenticationResult
     {
+        public static String AUTHORIZED = "AUTHORIZED";
+		public static String UNAUHORIZED = "UNAUHORIZED";
+		public static String ERROR = "ERROR";
+		public static String NEED_TO_ACTIVATE_NEW = "NEED_TO_ACTIVATE_NEW";
+		public static String DUPLICATED = "DUPLICATED";
+
         public string resultCode { get; set; } // authorized, unauthorized, needToActivateNew
         public ActivatedSubscription activatedSubscription { get; set; }
+        public ActivatedSubscription message { get; set; }
     }
 
     class ActivatedSubscription

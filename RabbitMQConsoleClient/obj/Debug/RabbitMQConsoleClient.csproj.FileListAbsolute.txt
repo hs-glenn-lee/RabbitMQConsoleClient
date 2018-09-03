@@ -13,3 +13,18 @@ C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debu
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.dll
 C:\Users\leehs\source\repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.xml
 C:\Users\leehs\Source\Repos\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\EasyNetQ.dll
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQConsoleClient.exe.config
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQConsoleClient.exe
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQConsoleClient.pdb
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\EasyNetQ.dll
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.dll
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQ.Client.dll
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\Newtonsoft.Json.xml
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\bin\Debug\RabbitMQ.Client.xml
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.csprojAssemblyReference.cache
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.csproj.CoreCompileInputs.cache
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.csproj.CopyComplete
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.exe
+C:\.NET Projects\RabbitMQConsoleClient\RabbitMQConsoleClient\obj\Debug\RabbitMQConsoleClient.pdb
