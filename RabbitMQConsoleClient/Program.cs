@@ -42,7 +42,7 @@ namespace RabbitMQConsoleClient
             advBus.Bind(exchange, unauthQueue, "client." + clientId + ".unauth");
 
 
-            Authentication appAuthMessage = new Authentication { username = "123", password="12345", type=Authentication.ACTIVATE_NEW };
+            Authentication appAuthMessage = new Authentication { username = "123", password="12345", type=Authentication.NORMAL, clientId=clientId };
             string jsonMsg = JsonConvert.SerializeObject(appAuthMessage);
             var body = Encoding.UTF8.GetBytes(jsonMsg);
 
