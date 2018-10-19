@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using RabbitMQ.Client;
 using Newtonsoft.Json; // install-package Newtonsoft.Json
 using EasyNetQ; // Install-Package EasyNetQ
-using EasyNetQ.Loggers;
 using System.Net.NetworkInformation;
 
 
@@ -28,7 +27,7 @@ namespace RabbitMQConsoleClient
             var clientId = firstMacAddress;
 
             //create Bus로 rabbitMQ 브로커에 접속한다.
-            var advBus = RabbitHutch.CreateBus("host=207.148.88.116:5672; virtualHost=created-docs-vhost; username=created-docs-dev; password=rlaehdgus"
+            var advBus = RabbitHutch.CreateBus("host=207.148.88.116:5672; virtualHost=created-docs-vhost; username=created-docs-dev; password=rlaehdgus",
                 x => x.Register(c => new AdvancedBusEventHandlers((s, e) => {//onConnected, 연결성공
                 }, (s, e) => {//onDisconnected, 연결이 끊김, 기본적으로 라이브러리에셔 여러번 retry함.
                     var advancedBus = (IAdvancedBus)s;
