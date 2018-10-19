@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using RabbitMQ.Client;
 using Newtonsoft.Json; // install-package Newtonsoft.Json
 using EasyNetQ; // Install-Package EasyNetQ
+using EasyNetQ.Loggers;
 using System.Net.NetworkInformation;
+
 
 
 namespace RabbitMQConsoleClient
@@ -26,8 +28,18 @@ namespace RabbitMQConsoleClient
             var clientId = firstMacAddress;
 
             //create Bus로 rabbitMQ 브로커에 접속한다.
-            var advBus = RabbitHutch.CreateBus("host=207.148.88.116:5672; virtualHost=created-docs-vhost; username=created-docs-dev; password=rlaehdgus").Advanced;
-            
+            var advBus = RabbitHutch.CreateBus("host=207.148.88.116:5672; virtualHost=created-docs-vhost; username=created-docs-dev; password=rlaehdgus"
+                x => x.Register(c => new AdvancedBusEventHandlers((s, e) => {//onConnected, 연결성공
+                }, (s, e) => {//onDisconnected, 연결이 끊김, 기본적으로 라이브러리에셔 여러번 retry함.
+                    var advancedBus = (IAdvancedBus)s;
+                    Console.WriteLine(advancedBus.IsConnected); // This will print false.
+
+                    //기본적으로 app 클라이언트가 생성한 큐가 모두 제거되기 때문에 버스를 버리고 다시 만드는게 좋다.
+                    advancedBus.Dispose();
+                }))).Advanced;
+
+
+
             // exchange는 메세지를 분류해 주는 곳으로, 이미 있는 exchange를 새로 declare해도 문제 없다.
             var exchange = advBus.ExchangeDeclare("created-docs.direct", ExchangeType.Direct);
 
